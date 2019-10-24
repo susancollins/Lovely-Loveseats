@@ -1,0 +1,20 @@
+import random
+
+money = 100
+
+def coin_flip(guess, bet):
+  print("Are you ready to win? You guessed " + guess + ".")
+  flip = random.randint(1,2)
+  if flip == 1: 
+    print ("Heads it is!")
+  elif flip == 2: 
+    print ("It's tails!")
+  
+  if (guess == "heads" and flip == 1) or (guess == "tails" and flip == 2): 
+    print("You won $" + str(bet))
+    return bet
+  else: 
+    print ("You lost $" + str(bet) + ". Better luck next time!")
+    return -bet
+  
+
