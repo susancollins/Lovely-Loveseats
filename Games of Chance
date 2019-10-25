@@ -1,0 +1,108 @@
+import random
+
+money = 100
+
+
+
+#Write your game of chance functions here
+
+def coin_flip(guess, bet):
+  print("Are you ready to win? You guessed " + guess + ".")
+  flip = random.randint(1,2)
+  if flip == 1: 
+    print ("Heads it is!")
+  elif flip == 2: 
+    print ("It's tails!")
+  
+  if ((guess == "heads" or guess == "Heads") and flip == 1) or ((guess == "tails" or guess == "Tails") and flip == 2): 
+    print("You won $" + str(bet) + "!")
+    return bet
+  else: 
+    print ("You lost $" + str(bet) + ". Better luck next time!")
+  return -bet
+  
+
+def cho_han(guess, bet):
+  print("Let's play Cho Han! You guessed " + guess + ".")
+  die1 = random.randint(1,6)
+  die2 = random.randint(1,6)
+  addition = (die1 + die2)%2
+  
+  if addition == 0: 
+    print("The result was even!")
+  else: 
+    print ("The result was odd!")
+    
+  if ((guess == "even" or guess == "Even") and addition == 0) or ((guess == "odd" or guess == "Odd") and addition != 0):
+    print ("You won $" + str(bet) + "!")
+    return +bet
+
+  else: 
+    print ("You lost $" + str(bet) + ". Sorry bud!")
+    return -bet
+  
+  
+def card_pick(bet):
+  card_list = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13]
+  card_1 = random.choice(card_list)
+  card_list.remove(card_1)
+  card_2 = random.choice(card_list)
+  print("Let's play a game! Will you pick the higher card? Place a bet!")
+        
+  if card_1 == 1:
+        print("You picked...an Ace!")
+  elif card_1 == 11:
+        print("You picked...a Jack!")
+  elif card_1 == 12:
+        print("You picked...a Queen!")
+  elif card_1 == 13:
+        print("You picked...a King!")
+  else: print ("You picked...a " + str(card_1) + "!")
+  
+  if card_2 == 1:
+        print("I picked...an Ace!")
+  elif card_2 == 11:
+        print("I picked...a Jack!")
+  elif card_2 == 12:
+        print("I picked...a Queen!")
+  elif card_2 == 13:
+        print("I picked...a King!")
+  else: 
+        print ("I picked...a " + str(card_2) + "!")
+        
+  if card_1 > card_2: 
+        print ("You win $" + str(bet) + "! I'll get you next time...")
+        return +bet
+  elif card_2 > card_1:
+        print ("I win this time! You lose $" + str(bet) + ". Better luck next time!")
+        return -bet
+  else: 
+        print("We picked the same card! Let's try again. ")
+        return 0
+        
+def roulette(guess, bet):
+  print ("Let's play European roulette! Tell me what you would like to bet on, and how much you would like to put down! If you guess whether the number is odd or even, you will win your bet. BUT if you are feeling lucky, you can guess the exact number for 35 times your bet!! What's it going to be?")
+  print ("You bet $" + str(bet)+ " on " + str(guess) + ".")
+  
+  result = random.randint(0,36)
+  print ("The ball landed on..." + str(result) + "!")
+  odd_even = result%2
+  
+  if (guess == "even" and odd_even == 0) or (guess == "odd" and odd_even != 0): 
+    print ("Your guess was correct! You win $" + str(bet) + "! Nice job!")
+    return +bet
+  elif guess == result:
+    print("Your guess was correct! You win $" + str(bet*35) + "! You're rich!")
+    return bet*35
+  else:
+    print("You guessed wrong this time. You lose your bet of $" + str(bet) + ". Better luck next time!")
+    return -bet
+  
+
+  
+
+  
+
+#Call your game of chance functions here
+print ("----------------------------")
+print ("You have $" + str(money) + " in your bank.")
